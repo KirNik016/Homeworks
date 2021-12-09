@@ -1,0 +1,44 @@
+package com.example.homework1;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+    Button nextActivBtn;
+    TextView tvRestore;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        nextActivBtn = findViewById(R.id.nextActivBtn);
+        tvRestore = findViewById(R.id.tvRestore);
+
+        Bundle arguments = getIntent().getExtras();
+        if(arguments != null){
+            String words = arguments.get("text").toString();
+            tvRestore.setText(words);
+        }
+        View.OnClickListener clickListener = new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                switch(v.getId()) {
+
+                    case R.id.nextActivBtn:
+                        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+            }
+        };
+    }
