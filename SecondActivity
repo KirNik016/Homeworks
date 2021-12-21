@@ -31,7 +31,9 @@ public class SecondActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(SecondActivity.this, MainActivity.class);
                     intent.putExtra("text", text);
+                    setResult(RESULT_OK, intent);
                     startActivity(intent);
+                    finish();
                 }
             }
         };
